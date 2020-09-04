@@ -17,7 +17,7 @@ axios.get('https://lambda-times-api.herokuapp.com/topics')
     .then(function(response){
 
         const parent = document.querySelector('div.topics')
-        console.log(response.data)
+        // console.log(response.data)
         const data = response.data['topics']
 
         for (let i = 0; i < data.length; i++){
