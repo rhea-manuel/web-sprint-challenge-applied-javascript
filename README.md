@@ -28,13 +28,23 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What is the DOM?
 
+The DOM is what Javascript accesses when manipulating the HTML.
+
 2. What is an event?
+
+An event refers to something that happens on the page. This can be when a user interacts with the page (like mouse events) or even when not (like the page being loaded)
 
 3. What is an event listener?
 
+An event listener is a function that can be added to any DOM element on the page. When an event occurs involving this element, the event listener executes. 
+
 4. Why would we convert a NodeList into an Array?
 
+Arrays have many inbuilt functions that are convenient to use that NodeList does not have.
+
 5. What is a component?
+
+A component is a reusable piece of HTML, CSS, and JS combined. It allows the developer to make several elements with similar functionality.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
