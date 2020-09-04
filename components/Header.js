@@ -11,7 +11,9 @@
 // Use your function to create a header
 // and append it to the DOM inside the div.header-container
 
+// Creates and returns the header element
 function Header() {
+
     const parentPanel = document.createElement('div')
     parentPanel.className = 'header'
 
@@ -23,7 +25,7 @@ function Header() {
     const h1 = document.createElement('h1')
     h1.textContent = 'Lambda Times'
     parentPanel.appendChild(h1)
-    
+
     const temp = document.createElement('span')
     temp.textContent = '98°'
     temp.className = 'temp'
@@ -32,6 +34,7 @@ function Header() {
     return parentPanel
 }
 
+// Adds the header to the container
 const toAppend = Header()
 const parent = document.querySelector('.header-container')
 parent.appendChild(toAppend)

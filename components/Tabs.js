@@ -14,26 +14,19 @@
 // import axios from 'axios'
 
 axios.get('https://lambda-times-api.herokuapp.com/topics')
-    .then(function(response){
+    .then(function (response) {
 
+        // Gets the parent element and all the topic names
         const parent = document.querySelector('div.topics')
-        // console.log(response.data)
         const data = response.data['topics']
 
-        for (let i = 0; i < data.length; i++){
+        for (let i = 0; i < data.length; i++) {
             const curTab = document.createElement('div')
             curTab.textContent = data[i]
             curTab.className = 'tab'
             parent.appendChild(curTab)
         }
     })
-    .catch(function(error){
+    .catch(function (error) {
         console.log('error')
     })
-
-    // .then(response){
-    //     // console.log(response)
-    // }
-    // .catch(error){
-
-    // }

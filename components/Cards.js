@@ -22,50 +22,52 @@
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
 axios.get('https://lambda-times-api.herokuapp.com/articles')
-    .then(function(response){
-        console.log(response.data)
+    .then(function (response) {
+
+        // Get parent container
         const parent = document.querySelector('.cards-container')
 
-        const allTopics = ['bootstrap', 'javascript', 'jquery', 'node', 'technology']
+        // ------
+        // Dynamically create an array with all topic names for easier iteration
+        // ------
 
-        for (let i = 0; i < allTopics.length; i++){
+        // Get all tabs
+        let allTabs = document.querySelectorAll('.tab')
+        allTabs = Array.from(allTabs)
+
+        const allTopics = [];
+
+        // Iterate through the tabs and add the name of each tab to the allTopics array
+        for (let i = 0; i < allTabs.length; i++) {
+            allTopics.push(allTabs[i].textContent)
+        }
+
+        // Iterate through all topics and make all the cards
+        for (let i = 0; i < allTopics.length; i++) {
             makeCardByTopic(allTopics[i])
         }
 
-        // for (let i = 0; i <allTopics.length; i++){
-        //     const toSend = response['data']['articles'][allTopics[i]]
-
-        //     // for (let j = 0; j <)
-        //     // const card = createCard(toSend)
-
-        // }
-
-        // makeCardByTopic('bootstrap')
-
-        function makeCardByTopic(topic){
+        // Helper function: Takes a topic, then creates all cards for that topic and appends it to the parent.
+        function makeCardByTopic(topic) {
 
             const allArticles = response['data']['articles'][topic]
 
-            for (let i = 0; i < allArticles.length; i++){
+            // Iterates through all the articles for current topics and adds it to the parent
+            for (let i = 0; i < allArticles.length; i++) {
                 const card = createCard(allArticles[i])
                 parent.appendChild(card)
             }
 
-            
         }
 
-        // const toSend = response.data.articles.bootstrap
-        // const card = createCard (toSend[0])
-
-        // const parent = document.querySelector('.cards-container')
-        // parent.appendChild(card)
     })
-    .catch(function(error){
+
+    .catch(function (error) {
         console.log('error')
     })
 
-function createCard (info){
-    // console.log(category)
+// Creates a single card based on the object passed in with information, and returns the card
+function createCard(info) {
 
     const parent = document.createElement('div')
     parent.className = 'card'
@@ -90,6 +92,11 @@ function createCard (info){
     const name = document.createElement('span')
     name.textContent = `By: ${info.authorName}`
     author.appendChild(name)
+
+    // Logs the headline when clicked
+    parent.addEventListener('click', function () {
+        console.log(info.headline)
+    })
 
     return parent
 
